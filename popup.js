@@ -36,7 +36,7 @@ $(function(){
 			for(let i = 0; i < Math.ceil(arrAds.length/SPLIT); i++) {
   				const startCount = i * SPLIT
   				const p = arrAds.slice(startCount, startCount + SPLIT)
-  				fillForm("disapproved", caseNum, p, aid)
+  				fillFormNew("disapproved", caseNum, p, aid)
 			}
 		}
 	})
@@ -109,6 +109,9 @@ $(function(){
 
 	function fillForm(type, caseNum, ads, description, agentName){
 		chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "description":description, "agentName":agentName}, function (response) {});
+	}
+	function fillFormNew(type, caseNum, ads, aid){
+		chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "aid":aid}, function (response) {});
 	}
 
 	function getCaseNumUrl(){
