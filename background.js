@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener(
         const agentName = request.agentName
 
         chrome.tabs.create({
-        	url: "https://www.facebook.com/help/contact/362415677832739"
+        	url: "https://www.facebook.com/help/contact/274756693226815"
         }, function(tab) {
           chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
             if (tabId === tab.id && changeInfo.status == 'complete') {
@@ -49,5 +49,3 @@ function saveToClipboard(text) {
     document.execCommand('copy');
     copyFrom.remove();
 }
-
-
