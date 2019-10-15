@@ -2,9 +2,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if(request.type === "disapproved"){
 		const caseNum = request.caseNum
 		const ads = request.ads
-		const description = request.description
-		const agentName = request.agentName
-  	// $("#317701148281405").val(agentName)
+		const aid = request.aid
   	if(caseNum){
     		$("#1417073758607475").val(caseNum)
   	}
@@ -24,11 +22,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   	// $("#296084320450771").val(description)
   	// $('label[for="1496973637295144.0"]').click()
 
-  	// const btnAdd = document.getElementsByClassName("_271k _271m _1qjd _7tvm _7tv2 _7tv4")[0]
-  	// const ad_rows = ads.length - 5
-  	// for (let i = 0; i < ad_rows; i++) {
-  	//   btnAdd.click()
-  	// }
   	ads.forEach((item, index) => {
     			$('._58al').eq(index).val(item)
   	})
@@ -54,5 +47,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		chrome.runtime.sendMessage({
 			type:"popup", msg:msg
 	    	})
+	}else if(request.type == "tabinfo"){
+		const aid = $('._4ytq:contains("Ad Account ID")').siblings('._4ytr').find('._2lj1').text()
+		const tier = $('._4ytq:contains("Tier")').siblings('._4ytr').text()
+		sendResponse({aid:aid, tier:tier })
 	}
 })

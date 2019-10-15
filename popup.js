@@ -28,7 +28,7 @@ $(function(){
 	$('#btn-form-disapproved').click(function(){
 		const caseNum = $('#case-num').val()
 		const areaAds = $('#ads-area').val()
-		description = $('#description').val()
+		description = $('#aid').val()
 		if(areaAds){
 			let arrAds = areaAds.split(/\r\n|\r|\n/)
 			arrAds = arrAds.map(s => s.trim())
@@ -36,7 +36,7 @@ $(function(){
 			for(let i = 0; i < Math.ceil(arrAds.length/SPLIT); i++) {
   				const startCount = i * SPLIT
   				const p = arrAds.slice(startCount, startCount + SPLIT)
-  				fillForm("disapproved", caseNum, p, description, agentName)
+  				fillForm("disapproved", caseNum, p, aid)
 			}
 		}
 	})
@@ -44,7 +44,7 @@ $(function(){
 	$('#btn-form-pending').click(function(){
 		const caseNum = $('#case-num').val()
 		const areaAds = $('#ads-area').val()
-		description = $('#description').val()
+		description = $('#aid').val()
 		if(areaAds){
 			let arrAds = areaAds.split(/\r\n|\r|\n/)
 			arrAds = arrAds.map(s => s.trim())
@@ -145,5 +145,19 @@ $(function(){
 			type: 'copy',
 			text: str
 		})
+	}
+
+	function getTabElements(){
+	chrome.tabs.query({currentWindow: true, active: true},
+		function(tabs){
+			chrome.tabs.sendMessage(tabs[0].id, {type: 'tabinfo'}, function(res){
+				if(res){
+					$('#aid').val(res.aid)
+					// setVariableEach('aid', res.aid)
+					// setVariableEach('tier', res.tier)
+				}
+			})
+		}
+	)
 	}
 })
