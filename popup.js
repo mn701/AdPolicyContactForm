@@ -30,7 +30,7 @@ $(function(){
 		const caseNum = $('#case-num').val()
 		const areaAds = $('#ads-area').val()
 		const aid = $('#aid').val()
-		console.log("aid", aid)
+
 		if(areaAds){
 			let arrAds = areaAds.split(/\r\n|\r|\n/)
 			arrAds = arrAds.map(s => s.trim())
@@ -46,7 +46,7 @@ $(function(){
 	$('#btn-form-pending').click(function(){
 		const caseNum = $('#case-num').val()
 		const areaAds = $('#ads-area').val()
-		description = $('#aid').val()
+		description = $('#description').val()
 		if(areaAds){
 			let arrAds = areaAds.split(/\r\n|\r|\n/)
 			arrAds = arrAds.map(s => s.trim())
@@ -109,9 +109,9 @@ $(function(){
 		$('#description').val(msgStr)
     	})
 
-	function fillForm(type, caseNum, ads, description, agentName){
-		chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "description":description, "agentName":agentName}, function (response) {});
-	}
+	// function fillForm(type, caseNum, ads, description, agentName){
+	// 	chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "description":description, "agentName":agentName}, function (response) {});
+	// }
 	function fillFormNew(type, caseNum, ads, aid){
 		chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "aid":aid}, function (response) {});
 	}

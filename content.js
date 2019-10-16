@@ -3,8 +3,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		const caseNum = request.caseNum
 		const ads = request.ads
 		const aid = request.aid
-		console.log(aid)
-		
+		console.log(request.aid)
+
   	if(caseNum){
     		$("#1417073758607475").val(caseNum)
   	}
