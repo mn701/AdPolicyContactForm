@@ -24,11 +24,13 @@ $(function(){
 
 	readPopupArr()
 	getCaseNumUrl()
+	getTabElements()
 
 	$('#btn-form-disapproved').click(function(){
 		const caseNum = $('#case-num').val()
 		const areaAds = $('#ads-area').val()
-		description = $('#aid').val()
+		const aid = $('#aid').val()
+		console.log("aid", aid)
 		if(areaAds){
 			let arrAds = areaAds.split(/\r\n|\r|\n/)
 			arrAds = arrAds.map(s => s.trim())

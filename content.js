@@ -3,6 +3,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		const caseNum = request.caseNum
 		const ads = request.ads
 		const aid = request.aid
+		console.log(aid)
+		
   	if(caseNum){
     		$("#1417073758607475").val(caseNum)
   	}
@@ -14,13 +16,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		$('label[for="617944538579149.0"]').click()
   	$('input[name=ReqType_NotPolitical]').val(['Ad Disapproval'])
 		$('label[for="1616059722049510.1"]').click()
-
+		$("#279850462081004").val(aid)
 		$('input[name=Field1496973637295144]').val(['yes'])
 		$('label[for="1496973637295144.0"]').click()
-
-  	// $("#224948714266660").val(ads[0])
-  	// $("#296084320450771").val(description)
-  	// $('label[for="1496973637295144.0"]').click()
 
   	ads.forEach((item, index) => {
     			$('._58al').eq(index).val(item)
