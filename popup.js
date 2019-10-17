@@ -48,11 +48,12 @@ $(function(){
 		const caseNum = $('#case-num').val()
 		const areaAds = $('#ads-area').val()
 		description = $('#description').val()
+		const aid = $('#aid').val()
 		if(areaAds){
 			let arrAds = areaAds.split(/\r\n|\r|\n/)
 			arrAds = arrAds.map(s => s.trim())
 			arrAds.forEach(function(element) {
-				fillForm("pending", caseNum, element, description, agentName)
+				fillFormNew("pending", caseNum, element, aid, description)
 			})
 		}
 	})
@@ -110,9 +111,6 @@ $(function(){
 		$('#description').val(msgStr)
     	})
 
-	// function fillForm(type, caseNum, ads, description, agentName){
-	// 	chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "description":description, "agentName":agentName}, function (response) {});
-	// }
 	function fillFormNew(type, caseNum, ads, aid, description){
 		chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "aid":aid, "description":description}, function (response) {});
 	}

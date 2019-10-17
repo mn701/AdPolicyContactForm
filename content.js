@@ -32,13 +32,25 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	}else if(request.type === "pending"){
 		const caseNum = request.caseNum
 		const ad = request.ad
+		const aid = request.aid
+		console.log(aid)
+
 		const description = request.description
 		if(caseNum){
-	    		$("#337290956413644").val(caseNum)
-	  	}
-		$("#486556404885036").val(ad)
+	    		$("#1417073758607475").val(caseNum)
+  	}
+		$("#105707632890694").val("Singapore, Singapore")
+		$('input[name=gcrclient]').val(['No'])
+		$('label[for="617944538579149.0"]').click()
+  	$('input[name=Account_category]').val(['GSO'])
+		$('input[name=IsPolitical]').val(['No'])
+		$('input[name=ReqType_NotPolitical]').val(['Pending Ad Approval'])
+		$('label[for="359231001302163.0"]').click()
+		$("#279850462081004").val(aid)
+
+		$("#218002451918555").val(ad)
 		$("#296084320450771").val(description)
-		$('#u_0_5').click()
+		$('#u_0_i').click()
 	}else if(request.type == "submitted"){
 		let msg = $("._t").text() ?  $("._t").text() : ""
 		msg = msg.replace("Okay", "")
