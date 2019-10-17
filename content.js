@@ -3,7 +3,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		const caseNum = request.caseNum
 		const ads = request.ads
 		const aid = request.aid
-		console.log(request.aid)
+		const description = request.description
 
   	if(caseNum){
     		$("#1417073758607475").val(caseNum)
@@ -23,6 +23,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   	ads.forEach((item, index) => {
     			$('._58al').eq(index).val(item)
   	})
+
+		$("#296084320450771").val(description)
   	// const btnConfirm = document.getElementsByClassName("_271k _271m _1qjd _7tvm _7tv2 _7tv4")[1]
   	// btnConfirm.click()
   	$('#u_0_8').click()

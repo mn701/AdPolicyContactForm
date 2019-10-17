@@ -29,6 +29,7 @@ $(function(){
 	$('#btn-form-disapproved').click(function(){
 		const caseNum = $('#case-num').val()
 		const areaAds = $('#ads-area').val()
+		description = $('#description').val()
 		const aid = $('#aid').val()
 
 		if(areaAds){
@@ -38,7 +39,7 @@ $(function(){
 			for(let i = 0; i < Math.ceil(arrAds.length/SPLIT); i++) {
   				const startCount = i * SPLIT
   				const p = arrAds.slice(startCount, startCount + SPLIT)
-  				fillFormNew("disapproved", caseNum, p, aid)
+  				fillFormNew("disapproved", caseNum, p, aid, description)
 			}
 		}
 	})
@@ -112,8 +113,8 @@ $(function(){
 	// function fillForm(type, caseNum, ads, description, agentName){
 	// 	chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "description":description, "agentName":agentName}, function (response) {});
 	// }
-	function fillFormNew(type, caseNum, ads, aid){
-		chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "aid":aid}, function (response) {});
+	function fillFormNew(type, caseNum, ads, aid, description){
+		chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "aid":aid, "description":description}, function (response) {});
 	}
 
 	function getCaseNumUrl(){
