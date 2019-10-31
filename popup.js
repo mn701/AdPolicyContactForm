@@ -21,7 +21,6 @@ $(function(){
 		}
 	})
 
-
 	readPopupArr()
 	getCaseNumUrl()
 	getTabElements()
@@ -95,7 +94,7 @@ $(function(){
 
 		if(areaAds){
 			let arrAds = areaAds.split(/\r\n|\r|\n/)
-			arrAds = arrAds.map(s => s.trim())
+			ads = arrAds.map(s => s.trim())
 
 			chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "aid":aid, "description":description}, function (response) {});
 			fillFormNew("disapproved", caseNum, arrAds, aid, description)
