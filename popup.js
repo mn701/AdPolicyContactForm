@@ -95,9 +95,7 @@ $(function(){
 		if(areaAds){
 			let arrAds = areaAds.split(/\r\n|\r|\n/)
 			ads = arrAds.map(s => s.trim())
-
 			chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "aid":aid, "description":description}, function (response) {});
-			fillFormNew("disapproved", caseNum, arrAds, aid, description)
 		}
 	}
 
