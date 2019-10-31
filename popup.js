@@ -21,42 +21,16 @@ $(function(){
 		}
 	})
 
-
 	readPopupArr()
 	getCaseNumUrl()
 	getTabElements()
 
 	$('#btn-form-disapproved').click(function(){
-		const caseNum = $('#case-num').val()
-		const areaAds = $('#ads-area').val()
-		description = $('#description').val()
-		const aid = $('#aid').val()
-
-		if(areaAds){
-			let arrAds = areaAds.split(/\r\n|\r|\n/)
-			arrAds = arrAds.map(s => s.trim())
-			fillFormNew("disapproved", caseNum, arrAds, aid, description)
-			// for(let i = 0; i < Math.ceil(arrAds.length/SPLIT); i++) {
-  		// 		const startCount = i * SPLIT
-  		// 		const p = arrAds.slice(startCount, startCount + SPLIT)
-  		// 		fillFormNew("disapproved", caseNum, p, aid, description)
-			// }
-		}
+		fillFormNew("disapproved")
 	})
 
 	$('#btn-form-pending').click(function(){
-		const caseNum = $('#case-num').val()
-		const areaAds = $('#ads-area').val()
-		description = $('#description').val()
-		const aid = $('#aid').val()
-		if(areaAds){
-			let arrAds = areaAds.split(/\r\n|\r|\n/)
-			arrAds = arrAds.map(s => s.trim())
-			fillFormNew("pending", caseNum, arrAds, aid, description)
-			// arrAds.forEach(function(element) {
-			// 	fillFormNew("pending", caseNum, element, aid, description)
-			// })
-		}
+		fillFormNew("pending")
 	})
 
 	$('#get-popup').click(getPopup)
@@ -112,8 +86,17 @@ $(function(){
 		$('#description').val(msgStr)
     	})
 
-	function fillFormNew(type, caseNum, ads, aid, description){
-		chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "aid":aid, "description":description}, function (response) {});
+	function fillFormNew(type){
+		const caseNum = $('#case-num').val()
+		const areaAds = $('#ads-area').val()
+		description = $('#description').val()
+		const aid = $('#aid').val()
+
+		if(areaAds){
+			let arrAds = areaAds.split(/\r\n|\r|\n/)
+			ads = arrAds.map(s => s.trim())
+			chrome.runtime.sendMessage({"type":type, "caseNum":caseNum, "ads":ads, "aid":aid, "description":description}, function (response) {});
+		}
 	}
 
 	function getCaseNumUrl(){
