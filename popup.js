@@ -35,12 +35,12 @@ $(function(){
 		if(areaAds){
 			let arrAds = areaAds.split(/\r\n|\r|\n/)
 			arrAds = arrAds.map(s => s.trim())
-
-			for(let i = 0; i < Math.ceil(arrAds.length/SPLIT); i++) {
-  				const startCount = i * SPLIT
-  				const p = arrAds.slice(startCount, startCount + SPLIT)
-  				fillFormNew("disapproved", caseNum, p, aid, description)
-			}
+			fillFormNew("disapproved", caseNum, arrAds, aid, description)
+			// for(let i = 0; i < Math.ceil(arrAds.length/SPLIT); i++) {
+  		// 		const startCount = i * SPLIT
+  		// 		const p = arrAds.slice(startCount, startCount + SPLIT)
+  		// 		fillFormNew("disapproved", caseNum, p, aid, description)
+			// }
 		}
 	})
 
@@ -52,9 +52,10 @@ $(function(){
 		if(areaAds){
 			let arrAds = areaAds.split(/\r\n|\r|\n/)
 			arrAds = arrAds.map(s => s.trim())
-			arrAds.forEach(function(element) {
-				fillFormNew("pending", caseNum, element, aid, description)
-			})
+			fillFormNew("pending", caseNum, arrAds, aid, description)
+			// arrAds.forEach(function(element) {
+			// 	fillFormNew("pending", caseNum, element, aid, description)
+			// })
 		}
 	})
 
