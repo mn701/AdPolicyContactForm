@@ -35,7 +35,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		}else if(request.type === "pending"){
 			$('input[name=ReqType_NotPolitical]').val(['Pending Ad Approval'])
 			$('label[for="359231001302163.0"]').click()
-			$("#218002451918555").val(ads)
+			const joined = ads.join('\n')
+			$("#218002451918555").val(joined)
 		}
 		$("#296084320450771").val(description)
   	// const btnConfirm = document.getElementsByClassName("_271k _271m _1qjd _7tvm _7tv2 _7tv4")[1]
