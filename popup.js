@@ -12,7 +12,7 @@ $(function(){
 	const TXT_ENTER_NAME = "(Junさん以外の場合)アイコンを右クリックして[Options]から名前をセットしてください"
 	const bg = chrome.extension.getBackgroundPage()
 	let description = "Dear team,\n\nCould you check on below Ad?\nA campaign already started, so client really concerns about this Ad.\n\n*If this ad will not be approved, please let me know the reason clearly. because the user stick to this one.\n\nBest Regards,"
-	let agentName = 'Jun Iwata'
+	let agentName = 'Jun'
 	chrome.storage.sync.get('agentName', function(option){
 		if(option.agentName){
 			agentName = option.agentName
